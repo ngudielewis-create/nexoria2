@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Administration - NEXORIA DIGITAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,10 85,30 85,70 50,90 15,70 15,30' fill='none' stroke='%2300ccff' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body class="admin-body">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="login-logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" class="hexagon-svg" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="adminHexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="adminGlow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <polygon points="50,10 85,30 85,70 50,90 15,70 15,30" class="hexagon-outline" fill="none"/>
+                            <polygon points="50,20 75,35 75,60 50,75 25,60 25,35" class="hexagon-face" fill="url(#adminHexGradient)" opacity="0.3"/>
+                            <path d="M28,38 L28,62 M28,38 L50,50 M50,50 L72,38 M72,38 L72,62" class="hexagon-inner" stroke-width="3" fill="none"/>
+                            <polygon points="28,38 35,42 35,58 28,62" fill="url(#adminHexGradient)" opacity="0.8"/>
+                            <polygon points="50,50 57,46 65,50 65,62 57,58 50,62" fill="url(#adminHexGradient)" opacity="0.8"/>
+                            <polygon points="72,38 79,42 79,58 72,62" fill="url(#adminHexGradient)" opacity="0.8"/>
+                            <circle cx="50" cy="50" r="3.5" class="hexagon-dot"/>
+                        </svg>
+                    </div>
+                    <h1>NEXORIA DIGITAL</h1>
+                    <p>Administration</p>
+                </div>
+                <form id="adminLoginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="adminUsername">Nom d'utilisateur</label>
+                        <input type="text" id="adminUsername" name="username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Mot de passe</label>
+                        <input type="password" id="adminPassword" name="password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-admin-login">Se connecter</button>
+                    <div id="loginError" class="error-message" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <div class="admin-logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" class="hexagon-svg" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="dashboardHexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0066ff;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="dashboardGlow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <polygon points="50,10 85,30 85,70 50,90 15,70 15,30" class="hexagon-outline" fill="none"/>
+                            <polygon points="50,20 75,35 75,60 50,75 25,60 25,35" class="hexagon-face" fill="url(#dashboardHexGradient)" opacity="0.3"/>
+                            <path d="M28,38 L28,62 M28,38 L50,50 M50,50 L72,38 M72,38 L72,62" class="hexagon-inner" stroke-width="3" fill="none"/>
+                            <polygon points="28,38 35,42 35,58 28,62" fill="url(#dashboardHexGradient)" opacity="0.8"/>
+                            <polygon points="50,50 57,46 65,50 65,62 57,58 50,62" fill="url(#dashboardHexGradient)" opacity="0.8"/>
+                            <polygon points="72,38 79,42 79,58 72,62" fill="url(#dashboardHexGradient)" opacity="0.8"/>
+                            <circle cx="50" cy="50" r="3.5" class="hexagon-dot"/>
+                        </svg>
+                    </div>
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-header-actions">
+                    <span class="admin-user">Administrateur</span>
+                    <button class="btn btn-logout" onclick="logout()">Déconnexion</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Admin Content -->
+        <main class="admin-main">
+            <div class="admin-container">
+                <!-- Stats Cards -->
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="totalOrders">0</h3>
+                            <p>Commandes totales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-content">
+                            <h3 id="pendingOrders">0</h3>
+                            <p>En attente</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 id="completedOrders">0</h3>
+                            <p>Terminées</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 id="totalRevenue">0$</h3>
+                            <p>Revenus</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2>Commandes récentes</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-refresh" onclick="loadOrders()">🔄 Actualiser</button>
+                            <button class="btn btn-export" onclick="exportOrders()">📥 Exporter</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Client</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <tr>
+                                    <td colspan="6" class="no-data">Aucune commande pour le moment</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Order Details Modal -->
+                <div id="orderModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Détails de la commande</h2>
+                            <button class="modal-close" onclick="closeModal()">&times;</button>
+                        </div>
+                        <div class="modal-body" id="orderDetails">
+                            <!-- Order details will be loaded here -->
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" onclick="closeModal()">Fermer</button>
+                            <button class="btn btn-primary" onclick="updateOrderStatus()">Mettre à jour</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
